@@ -1,0 +1,71 @@
+## Pao Ying Chub
+## Play A Game
+play_game <- function() {
+  cat("Welcome to `Pao Ying Chub` Game!\n")
+  
+  ## Define scores
+  player_score <- 0
+  computer_score <- 0
+  ties <- 0
+  
+  ## Condition Setup
+  winner <- function(user, comp) {
+    if (user == comp) {
+      ties <<- ties + 1
+      return("Tie!")
+    
+    } else if (
+      (user == "paper" && comp == "hammer") ||
+      (user == "hammer" && comp == "scissors") ||
+      (user == "scissors" && comp == "paper")
+    ) {
+      player_score <<- player_score + 1
+      return("Player Win!")
+    } else {
+      computer_score <<- computer_score + 1
+      return("Computer Win")
+    }
+  }
+  
+  ## Game Loop
+  while (TRUE) {
+    ## Define Choices
+    choices <- c("hammer", "scissors", "paper")
+    comp <- sample(choices, 1)
+    user <- readline("Enter your choice (hammer/paper/scissors or 'q' to quit): ")
+    
+    if(user == "q") {
+      break
+    }
+    
+    if (!(user %in% choices)) {
+      cat("Invalid input, please try a gain.\n")
+      next
+    }
+    
+    ## Declare Winner
+    result <- winner(user, comp)
+    cat("Result: ", result, "\n")
+    
+    ## Display
+    cat("Score - Player:", player_score,
+        "Score - Computer:", computer_score,
+        "Score - Ties:", ties)
+  }
+  
+  ## Summarize game
+  cat("\n--- Final Scores! ---\n")
+  cat("Total played:", player_score + computer_score + ties, "\n")
+  q
+  if (player_score > computer_score) {
+    cat("Winner is Player!\n")
+  } else if (player_score < computer_score) {
+    cat("Winner is Computer!\n")
+  } else {
+    cat("It's ties!\n")
+  }
+}
+
+
+## Start the game
+play_game()
