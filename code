@@ -39,7 +39,7 @@ play_game <- function() {
     }
     
     if (!(user %in% choices)) {
-      cat("Invalid input, please try a gain.\n")
+      cat("Invalid input, please try again.\n")
       next
     }
     
