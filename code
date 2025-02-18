@@ -1,4 +1,8 @@
 ## Pao Ying Chub
+#### create function
+#### if `user` quit, terminate the game
+#### summarise result
+
 ## Play A Game
 play_game <- function() {
   cat("Welcome to `Pao Ying Chub` Game!\n")
@@ -48,19 +52,19 @@ play_game <- function() {
     cat("Result: ", result, "\n")
     
     ## Display
-    cat("Score - Player:", player_score,
-        "Score - Computer:", computer_score,
+    cat("Score - Player:", player_score, "\n",
+        "Score - Computer:", computer_score, "\n",
         "Score - Ties:", ties)
   }
   
   ## Summarize game
   cat("\n--- Final Scores! ---\n")
   cat("Total played:", player_score + computer_score + ties, "\n")
-  q
+  
   if (player_score > computer_score) {
-    cat("Winner is Player!\n")
+    cat("Winner is Player!:", player_score,"\n")
   } else if (player_score < computer_score) {
-    cat("Winner is Computer!\n")
+    cat("Winner is Computer!:", computer_score,"\n")
   } else {
     cat("It's ties!\n")
   }
